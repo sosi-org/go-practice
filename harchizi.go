@@ -41,6 +41,7 @@ func main() {
 
 	s = <-ch
 	fmt.Println(s)
+	fmt.Println(<-ch)
 	// channels are for coordination. synchronisation.
 
 	/*
