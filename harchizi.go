@@ -38,4 +38,11 @@ func main() {
 	}*/
 	s = <-ch
 	fmt.Println(s)
+
+    /*
+    var a string
+    a = <-ch  receive from channel
+    ch <-a  send to channel
+
+    */   
 }
