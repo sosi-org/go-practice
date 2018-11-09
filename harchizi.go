@@ -2,11 +2,13 @@
 package main
 
 import "fmt"
-import "time"
+//import "time"
 //import ffmt "github.com/sohale/fmt"
 
-func reps(s string) {
-    fmt.Println("hi "+s)
+func reps(s string, ch chan string) {
+    ch <- "hi " + s
+    //"hi" -> ch   error
+    //var recvd string = <-ch
 }
 
 func main() {
@@ -17,8 +19,14 @@ func main() {
     // make: slice (dynamic array), channels, maps.
     //var ch chan string // nil
     ch := make(chan string)
-    go reps("aabbbbbce122222")
-    time.Sleep(100*time.Millisecond)
+    go reps("aabbbbbce122222", ch)
+    // time.Sleep(100*time.Millisecond)
+    // NOT:     for s string in ch {
+
+    //for {
+        s := <-ch
+        fmt.Println(s)
+    //}
     /*{
         fmt.Println(r, ch)
     }*/
